@@ -39,10 +39,10 @@ variable "service_task_execution_role" {
 }
 
 variable "environment_variables" {
-  type = list
+  type = list(any)
 
 }
 
 variable "capabilities" {
-  type = list
+  type = list(any)
 }
