@@ -1,6 +1,6 @@
-#variable "region" {
-#
-#}
+variable "region" {
+
+}
 
 variable "service_name" {
 
@@ -38,11 +38,11 @@ variable "service_task_execution_role" {
 
 }
 
-#variable "environment_variables" {
-#  type = list
-#
-#}
+variable "environment_variables" {
+  type = list
 
-#variable "capabilities" {
-#  type = list
-#}
+}
+
+variable "capabilities" {
+  type = list
+}
