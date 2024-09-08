@@ -10,7 +10,7 @@ variable "vpc_id" {
 
 }
 
-variable "private_subnetes" {
+variable "private_subnets" {
 
 }
 
