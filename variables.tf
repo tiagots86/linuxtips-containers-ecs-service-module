@@ -50,3 +50,15 @@ variable "capabilities" {
 variable "service_healthcheck" {
   type = map
 }
+
+variable "service_launch_type" {
+  
+}
+
+variable "service_task_count" {
+  
+}
+
+variable "service_hosts" {
+  
+}
