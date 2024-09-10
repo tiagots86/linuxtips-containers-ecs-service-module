@@ -1,5 +1,5 @@
 resource "aws_security_group" "main" {
-    name = format("%s-s%", var.cluster_name, var.service_name)
+    name = format("%s-%s", var.cluster_name, var.service_name)
     vpc_id = var.vpc_id
     ingress {
         from_port = var.service_port
