@@ -27,6 +27,11 @@ resource "aws_ecs_service" "main" {
       desired_count
     ]
   }
+
+  ordered_placement_strategy {
+    type  = "spread"
+    field = "atributte:ecs.availability-zone"
+  }
   #platform_version = "LATEST"
 
 
