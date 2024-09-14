@@ -138,9 +138,9 @@ variable "scale_tracking_cpu" {
 }
 
 variable "alb_arn" {
-  
+
 }
 
 variable "scale_tracking_requests" {
-  
+
 }
