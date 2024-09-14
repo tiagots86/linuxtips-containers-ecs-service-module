@@ -136,3 +136,11 @@ variable "scale_in_coodown" {
 variable "scale_tracking_cpu" {
 
 }
+
+variable "alb_arn" {
+  
+}
+
+variable "scale_tracking_requests" {
+  
+}
