@@ -62,3 +62,15 @@ variable "service_task_count" {
 variable "service_hosts" {
   
 }
+
+variable "scale_type" {
+  
+}
+
+variable "task_minimum" {
+  
+}
+
+variable "task_maximum" {
+  
+}
