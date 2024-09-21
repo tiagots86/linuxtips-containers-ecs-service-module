@@ -28,13 +28,22 @@ resource "aws_ecs_service" "main" {
     ]
   }
 
-  ordered_placement_strategy {
-    type  = "spread"
-    field = "attribute:ecs.availability-zone"
+  dynamic "ordered_placement_strategy" {
+    for_each = var.service_launch_type == "EC2" ? [1] : []
+
+    content {
+      type  = "spread"
+      field = "attribute:ecs.availability-zone"
+    }
+
   }
+
+  # ordered_placement_strategy {
+  #   type  = "spread"
+  #   field = "attribute:ecs.availability-zone"
+  # }
+
   #platform_version = "LATEST"
-
-
 
   depends_on = []
 
