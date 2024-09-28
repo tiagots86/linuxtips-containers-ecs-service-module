@@ -6,6 +6,12 @@ variable "service_name" {
 
 }
 
+variable "container_image" {
+  type = string
+  description = "imagem com tag para deployment de aplicação no ecs"
+  
+}
+
 variable "cluster_name" {
 
 }
