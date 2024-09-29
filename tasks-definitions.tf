@@ -10,7 +10,8 @@ resource "aws_ecs_task_definition" "main" {
   container_definitions = jsonencode([
     {
       name      = var.service_name,
-      image     = format("%s:latest", aws_ecr_repository.main.repository_url)
+      #image     = format("%s:latest", aws_ecr_repository.main.repository_url)
+      image     = var.container_image
       cpu       = var.service_cpu
       memory    = var.service_memory
       essencial = true
@@ -24,8 +25,8 @@ resource "aws_ecs_task_definition" "main" {
       logConfiguration = {
         logDriver = "awslogs"
         options = {
-          awslogs-group     = aws_cloudwatch_log_group.main.id
-          awslogs-region    = var.region
+          awslogs-group         = aws_cloudwatch_log_group.main.id
+          awslogs-region        = var.region
           awslogs-stream-prefix = var.service_name
         }
       }
