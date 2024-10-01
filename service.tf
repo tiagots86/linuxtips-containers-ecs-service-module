@@ -1,5 +1,5 @@
 resource "aws_ecs_service" "main" {
-  name            = format("%s-%s", var.cluster_name, var.service_name)
+  name            = var.service_name
   cluster         = var.cluster_name
   task_definition = aws_ecs_task_definition.main.arn
   desired_count   = var.service_task_count
