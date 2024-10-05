@@ -7,9 +7,9 @@ variable "service_name" {
 }
 
 variable "container_image" {
-  type = string
+  type        = string
   description = "imagem com tag para deployment de aplicação no ecs"
-  
+
 }
 
 variable "cluster_name" {
@@ -169,4 +169,15 @@ variable "scale_tracking_requests" {
   default = 0
 
 
+}
+
+variable "efs_volumes" {
+  type = list(object({
+    volume_name : string
+    file_system_id: string
+    file_system_root: string
+    mount_point: string
+    ready_only: bool
+  }))
+  default = []
 }
