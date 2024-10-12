@@ -45,8 +45,19 @@ variable "service_task_execution_role" {
 }
 
 variable "environment_variables" {
-  type = list(any)
+  type = list(object({
+    name: string
+    value: string
+  }))
+}
 
+variable "secrets" {
+  type = list(object({
+    name: string
+    valueFrom: string
+  }))
+  description = "Lista de secrets do parameter store ou do secrets manager"
+  default = []
 }
 
 variable "capabilities" {

@@ -47,6 +47,8 @@ resource "aws_ecs_task_definition" "main" {
       }
       environment = var.environment_variables
 
+      secrets = var.secrets
+
       mountPoints = [
         for volume in var.efs_volumes : {
           sourceVolume = volume.volume_name
