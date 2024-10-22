@@ -46,18 +46,18 @@ variable "service_task_execution_role" {
 
 variable "environment_variables" {
   type = list(object({
-    name: string
-    value: string
+    name : string
+    value : string
   }))
 }
 
 variable "secrets" {
   type = list(object({
-    name: string
-    valueFrom: string
+    name : string
+    valueFrom : string
   }))
   description = "Lista de secrets do parameter store ou do secrets manager"
-  default = []
+  default     = []
 }
 
 variable "capabilities" {
@@ -185,10 +185,16 @@ variable "scale_tracking_requests" {
 variable "efs_volumes" {
   type = list(object({
     volume_name : string
-    file_system_id: string
-    file_system_root: string
-    mount_point: string
-    ready_only: bool
+    file_system_id : string
+    file_system_root : string
+    mount_point : string
+    ready_only : bool
   }))
   default = []
+}
+
+variable "service_discovery_namespace" {
+  description = "Namespace ID do Service Discovery"
+  default = null
+
 }
