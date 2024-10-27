@@ -61,7 +61,9 @@ variable "secrets" {
 }
 
 variable "capabilities" {
-  type = list(any)
+  type        = list(string)
+  default     = []
+  description = "Lista de capacidades, como EC2 ou FARGATE"
 }
 
 variable "service_healthcheck" {
@@ -195,6 +197,6 @@ variable "efs_volumes" {
 
 variable "service_discovery_namespace" {
   description = "Namespace ID do Service Discovery"
-  default = null
+  default     = null
 
 }
