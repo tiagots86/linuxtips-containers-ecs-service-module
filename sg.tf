@@ -1,6 +1,8 @@
 resource "aws_security_group" "main" {
-  name   = format("%s-%s", var.cluster_name, var.service_name)
+  name = format("%s-%s", var.cluster_name, var.service_name)
+
   vpc_id = var.vpc_id
+
   ingress {
     from_port = var.service_port
     to_port   = var.service_port
@@ -10,7 +12,7 @@ resource "aws_security_group" "main" {
     ]
   }
 
-  ingress = {
+  ingress {
     from_port = 0
     to_port   = 65535
     protocol  = "tcp"
@@ -18,15 +20,13 @@ resource "aws_security_group" "main" {
       "0.0.0.0/0"
     ]
   }
+
   egress {
-    #libera todas as portas de saída:
     from_port = 0
     to_port   = 0
-    #todos os protocolos
-    protocol = "-1"
+    protocol  = "-1"
     cidr_blocks = [
       "0.0.0.0/0"
     ]
   }
-
 }
