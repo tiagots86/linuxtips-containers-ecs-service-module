@@ -25,23 +25,28 @@ variable "private_subnets" {
 }
 
 variable "service_port" {
-
+  type        = number
+  description = "Porta na qual o serviço estará acessível."
 }
 
 variable "service_cpu" {
-
+  type        = number
+  description = "Quantidade de CPU alocada para o serviço, especificada em unidades de CPU do ECS."
 }
 
 variable "service_memory" {
-
+  type        = number
+  description = "Quantidade de memória alocada para o serviço, especificada em MB."
 }
 
 variable "service_listener" {
-
+  type        = string
+  description = "ARN do listener do Application Load Balancer que será usado pelo serviço."
 }
 
 variable "service_task_execution_role" {
-
+  type        = string
+  description = "ARN da role de execução de tarefas do ECS que o serviço usará para executar."
 }
 
 variable "environment_variables" {
