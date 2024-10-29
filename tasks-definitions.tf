@@ -32,9 +32,11 @@ resource "aws_ecs_task_definition" "main" {
       essencial = true
       portMappings = [
         {
+          name          = service_name
           containerPort = var.service_port
           hostPort      = var.service_port
-          protocol      = "tcp"
+          protocol      = var.protocol
+          appProtocol   = var.service_protocol
         }
       ]
       logConfiguration = {
