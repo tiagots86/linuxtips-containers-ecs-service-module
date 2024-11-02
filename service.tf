@@ -42,10 +42,15 @@ resource "aws_ecs_service" "main" {
     subnets          = var.private_subnets
     assign_public_ip = false
   }
-  load_balancer {
-    target_group_arn = aws_alb_target_group.main.arn
-    container_name   = var.service_name
-    container_port   = var.service_port
+
+  dynamic "load_balancer" {
+    for_each = var.use_alb ? [1] : []
+    content {
+      target_group_arn = aws_alb_target_group.main[0].arn
+      container_name   = var.service_name
+      container_port   = var.service_port
+    }
+
   }
   lifecycle {
     ignore_changes = [

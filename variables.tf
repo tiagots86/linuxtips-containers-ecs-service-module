@@ -42,6 +42,7 @@ variable "service_memory" {
 variable "service_listener" {
   type        = string
   description = "ARN do listener do Application Load Balancer que será usado pelo serviço."
+  default     = null
 }
 
 variable "service_task_execution_role" {
@@ -229,4 +230,10 @@ variable "service_connect_name" {
 variable "service_connect_arn" {
   type    = String
   default = null
+}
+
+variable "use_alb" {
+  type        = bool
+  default     = true
+  description = "Habilita a exposição do serviço via load balancer"
 }
