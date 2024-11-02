@@ -89,7 +89,7 @@ resource "aws_ecs_service" "main" {
 
         client_alias {
           port     = var.service_port
-          dns_name = format("%s.%s, var.service_name, var.service_connect_name")
+          dns_name = format("%s.%s", var.service_name, var.service_connect_name)
         }
       }
     }
