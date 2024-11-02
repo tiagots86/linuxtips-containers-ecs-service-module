@@ -42,10 +42,15 @@ resource "aws_ecs_service" "main" {
     subnets          = var.private_subnets
     assign_public_ip = false
   }
-  load_balancer {
-    target_group_arn = aws_alb_target_group.main.arn
-    container_name   = var.service_name
-    container_port   = var.service_port
+
+  dynamic "load_balancer" {
+    for_each = var.use_alb ? [1] : []
+    content {
+      target_group_arn = aws_alb_target_group.main[0].arn
+      container_name   = var.service_name
+      container_port   = var.service_port
+    }
+
   }
   lifecycle {
     ignore_changes = [
@@ -69,6 +74,27 @@ resource "aws_ecs_service" "main" {
   # }
 
   #platform_version = "LATEST"
+
+  dynamic "service_connect_configuration" {
+    for_each = var.use_service_connect ? [var.service_connect_name] : []
+
+    content {
+      enabled   = var.use_service_connect
+      namespace = var.service_connect_name
+
+      service {
+        port_name = var.service_name
+
+        discovery_name = var.service_name
+
+        client_alias {
+          port     = var.service_port
+          dns_name = format("%s.%s, var.service_name, var.service_connect_name")
+        }
+      }
+    }
+
+  }
 
   depends_on = []
 
