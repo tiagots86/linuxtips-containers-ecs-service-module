@@ -208,12 +208,12 @@ variable "service_discovery_namespace" {
 }
 
 variable "service_protocol" {
-  type    = String
+  type    = string
   default = null
 }
 
 variable "protocol" {
-  type    = String
+  type    = string
   default = "tcp"
 }
 
@@ -223,12 +223,12 @@ variable "use_service_connect" {
 }
 
 variable "service_connect_name" {
-  type    = String
+  type    = string
   default = null
 }
 
 variable "service_connect_arn" {
-  type    = String
+  type    = string
   default = null
 }
 
