@@ -1,5 +1,5 @@
 resource "aws_alb_listener_rule" "main" {
-  count        = var.use_alb ? 1 : 0
+  count        = (var.use_alb && var.deployment_controller == "ECS") ? 1 : 0
   listener_arn = var.service_listener
   action {
     type             = "forward"

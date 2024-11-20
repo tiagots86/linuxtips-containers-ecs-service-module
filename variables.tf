@@ -237,3 +237,13 @@ variable "use_alb" {
   default     = true
   description = "Habilita a exposição do serviço via load balancer"
 }
+
+variable "deployment_controller" {
+  type    = string
+  default = "ECS"
+}
+
+variable "codedeploy_strategy" {
+  type    = string
+  default = "CodeDeployDefault.AllAtOnce"
+}
