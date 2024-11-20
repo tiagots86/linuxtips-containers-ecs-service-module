@@ -43,10 +43,10 @@ resource "aws_codedeploy_deployment_group" "main" {
           var.service_listener
         ]
       }
-      target_group_info {
+      target_group {
         name = aws_alb_target_group.blue[count.index].name
       }
-      target_group_info {
+      target_group {
         name = aws_alb_target_group.green[count.index].name
       }
     }
