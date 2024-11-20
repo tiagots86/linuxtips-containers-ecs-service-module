@@ -25,11 +25,11 @@ resource "null_resource" "deploy_codedeploy" {
   }
 
   depends_on = [
-    aws_ecs_service.main, 
-    aws_ecs_task_definition.main, 
-    aws_codedeploy_app.main, 
-    aws_codedeploy_deployment_group.main, 
-    local_file.appspec 
+    aws_ecs_service.main,
+    aws_ecs_task_definition.main,
+    aws_codedeploy_app.main,
+    aws_codedeploy_deployment_group.main,
+    local_file.appspec
   ]
 
 }
