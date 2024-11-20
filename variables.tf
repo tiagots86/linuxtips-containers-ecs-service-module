@@ -245,7 +245,7 @@ variable "deployment_controller" {
 
 variable "codedeploy_strategy" {
   type    = string
-  default = "CodeDeployDefault.AllAtOnce"
+  default = "CodeDeployDefault.ECSAllAtOnce"
 }
 
 variable "codedeploy_deployment_option" {
