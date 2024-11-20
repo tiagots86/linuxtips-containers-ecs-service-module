@@ -15,8 +15,8 @@ resource "aws_ecs_service" "main" {
   deployment_maximum_percent         = 200
   deployment_minimum_healthy_percent = 100
   deployment_circuit_breaker {
-    enable   = true
-    rollback = true
+    enable   = var.deployment_controller == "ECS" ? true : false
+    rollback = var.deployment_controller == "ECS" ? true : false
   }
 
   # capacity_provider_strategy {
@@ -46,7 +46,7 @@ resource "aws_ecs_service" "main" {
   dynamic "load_balancer" {
     for_each = var.use_alb ? [1] : []
     content {
-      target_group_arn = aws_alb_target_group.main[0].arn
+      target_group_arn = (var.use_alb && var.deployment_controller == "CODE_DEPLOY") ? aws_alb_target_group.blue[0].arn : aws_alb_target_group.main[0].arn
       container_name   = var.service_name
       container_port   = var.service_port
     }
@@ -54,7 +54,9 @@ resource "aws_ecs_service" "main" {
   }
   lifecycle {
     ignore_changes = [
-      desired_count
+      desired_count,
+      task_definition,
+      load_balancer
     ]
   }
 
@@ -94,6 +96,10 @@ resource "aws_ecs_service" "main" {
       }
     }
 
+  }
+
+  deployment_controller {
+    type = var.deployment_controller
   }
 
   depends_on = []
