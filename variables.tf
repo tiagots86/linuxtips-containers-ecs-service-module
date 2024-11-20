@@ -263,3 +263,23 @@ variable "codedeploy_termination_wait_time_in_minutes" {
   type    = number
   default = 2
 }
+
+variable "codedeploy_rollback_alarm" {
+  type    = bool
+  default = true
+}
+
+variable "codedeploy_rollback_error_threshold" {
+  type    = number
+  default = 10
+}
+
+variable "codedeploy_rollback_error_period" {
+  type    = number
+  default = 60
+}
+
+variable "codedeploy_rollback_error_evaluation_period" {
+  type    = number
+  default = 1
+}
